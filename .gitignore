@@ -1,4 +1,21 @@
-*.env
-env/
+# Entorno virtual
+backend/env/
+
+# Variables de entorno
+.env
+
+# Archivos generados por Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+
+# Archivos de logs
+*.log
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración de editor (opcional)
+.vscode/
+.idea/
