@@ -1,91 +1,150 @@
-/* Contenedor principal centrado */
-.page {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f4f2fa;
-  text-align: center;
+/* Estilos Globales y Reset */
+/* Asegura que el padding y el border se incluyan en el ancho/alto total de los elementos */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-/* Estilo para ocupar toda la pantalla */
 body, html, #root {
-  height: 100%;
+  height: 100%; /* Ocupa el 100% de la altura de la ventana */
   margin: 0;
   padding: 0;
-  background-color: #f4f2fa;
+  font-family: 'Segoe UI', sans-serif; /* Fuente global */
+  background-color: #ccc3ec; /* Color de fondo general del cuerpo */
+  color: #333; /* Color de texto predeterminado */
 }
 
-/* Contenedor general */
-.container {
-  width: 100%;
-  max-width: 600px; /* Para asegurar que el contenido no se haga demasiado grande */
+/* Contenedor principal de la página para centrar todo el contenido */
+.page {
+  height: 100vh; /* Ocupa el 100% de la altura del viewport */
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Segoe UI', sans-serif;
-  padding: 2rem;
-  margin: 0 auto;
+  /* Estas dos propiedades son CRUCIALES para centrar el .container */
+  justify-content: center; /* Centra horizontalmente a los ítems flex hijos */
+  align-items: center;   /* Centra verticalmente a los ítems flex hijos */
+  padding: 1rem; /* Padding general para que no se pegue a los bordes en móviles */
 }
 
-/* Tarjeta de contenido */
-.container > div {
-  width: 100%;
-  max-width: 600px;
-  background-color: white;
-  padding: 2rem;
+/* Contenedor de la aplicación (la "tarjeta" blanca) */
+.container {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  max-width: 500px; /* Ancho máximo por defecto para móviles y pantallas pequeñas */
+  
+  /* Flexbox para los elementos dentro del .container */
+  display: flex;
+  flex-direction: column; /* Apila los elementos verticalmente */
+  align-items: center; /* Centra los elementos hijos HORIZONTALMENTE dentro de esta columna */
+  
+  padding: 1.5rem; /* Padding interno para móviles */
+  gap: 1.5rem; /* Espacio entre los elementos hijos */
+  
+  background-color: white; /* Fondo blanco de la tarjeta */
   border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Sombra suave para la tarjeta */
+  
+  /* El text-align aquí afectará al texto directamente dentro del container, 
+     pero los elementos flex hijos se alinean con align-items */
+  text-align: left; 
 }
 
-/* Título */
+/* Título de la aplicación */
 h1 {
-  color: #5e4b8b;
-  margin-bottom: 1.5rem;
+  color: #161618;
+  margin-bottom: 0; 
+  font-size: 1.8rem;
+  text-align: center; /* Centra el título específicamente */
+  /* align-self: center; /* Esto es otra opción si el align-items: center del padre no funciona como quieres */
 }
 
-/* Campo de entrada */
+/* Campo de entrada de texto */
 input {
-  width: 100%;
+  width: 100%; /* Ocupa el 100% del ancho del padre (container) */
   padding: 0.8rem;
   font-size: 1rem;
   border: 2px solid #ccc;
   border-radius: 8px;
-  margin-bottom: 1rem;
   outline: none;
+  background-color: white;
+  color: #161618;
   transition: border 0.3s;
 }
 input:focus {
-  border-color: #8f75c1;
+  border-color: #b231d3;
 }
 
-/* Botón */
+/* Botón de enviar */
 button {
-  background-color: #8f75c1;
+  background-color: #7B61FF;
   color: white;
-  padding: 0.8rem 1.5rem;
   border: none;
+  padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 button:hover {
-  background-color: #6d5ca3;
+  background-color: #654de2;
 }
 
-/* Aseguramos que el contenedor de la respuesta esté alineado */
+/* Contenedor de la respuesta (la "cajita" de color) */
 .respuesta {
-  margin-top: 1.5rem;
-  padding: 1.2rem;
-  background-color: #eee8f6;
-  border-left: 5px solid #8f75c1;
-  border-radius: 8px;
-  text-align: left;
-  color: #000;
   width: 100%;
-  max-width: 600px; /* Aseguramos que la respuesta no ocupe todo el ancho */
-  margin: 0 auto;
+  padding: 1.2rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-top: 1rem; /* Margen superior para separarlo del botón */
+  box-shadow: 0 4px 12px rgba(123, 97, 255, 0.15);
+  text-align: left;
+  color: #161618;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* --- Media Queries para hacer el diseño responsive --- */
+
+/* Para pantallas medianas (tablets y algunos laptops pequeños) */
+@media (min-width: 768px) {
+  .container {
+    max-width: 700px;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  input, button {
+    font-size: 1.05rem;
+  }
+
+  .respuesta {
+    font-size: 1rem;
+  }
+}
+
+/* Para pantallas grandes (desktops) */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 950px; /* Ancho máximo para escritorios */
+    padding: 2.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  input, button {
+    font-size: 1.1rem;
+  }
+
+  .respuesta {
+    font-size: 1.05rem;
+  }
+}
+
+/* Para pantallas extra-grandes (monitores muy grandes) */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1100px; /* Ancho máximo para monitores muy grandes */
+  }
 }

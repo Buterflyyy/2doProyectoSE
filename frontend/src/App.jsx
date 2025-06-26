@@ -39,6 +39,7 @@ function App() {
       <button onClick={hacerPregunta} disabled={cargando}>
         {cargando ? 'Buscando...' : 'Preguntar'}
       </button>
+      <br />
       {respuesta && (
         <div className="respuesta">
           <strong>Respuesta:</strong> {respuesta}
