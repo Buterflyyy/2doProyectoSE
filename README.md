@@ -1,6 +1,7 @@
 # Nombre del proyecto: Asistente Bíblico con IA
 
-Descripción del sistema: Esta aplicación permite hacer preguntas bíblicas en lenguaje natural a través de una interfaz en React. Las respuestas son generadas mediante un backend en FastAPI, utilizando un sistema RAG con Chroma DB y el modelo Groq.
+## Descripción del sistema: 
+Esta aplicación permite hacer preguntas bíblicas en lenguaje natural a través de una interfaz en React. Las respuestas son generadas mediante un backend en FastAPI, utilizando un sistema RAG con Chroma DB y el modelo Groq.
 
 ## Tecnologías usadas:
 - React + Vite (frontend)
@@ -12,22 +13,24 @@ Descripción del sistema: Esta aplicación permite hacer preguntas bíblicas en 
 ## Cómo ejecutar el proyecto?
 
 ### Backend:
-bash
+```bash
 cd backend
 pip install -r requirements.txt
 uvicorn app:app --reload
+```
 
 ### Frontend
-bash
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
 Abre http://localhost:5173 para usar la aplicación.
 
-### Ejemplo de pregunta
-
 ## Ejemplo de uso
+
+### Ejemplo de pregunta
 
 > ¿Qué dice la Biblia sobre el perdón?
 
