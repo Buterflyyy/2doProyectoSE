@@ -25,9 +25,8 @@ npm run dev
 
 Abre http://localhost:5173 para usar la aplicación.
 
-### 5. Ejemplo de pregunta
+### Ejemplo de pregunta
 
-```markdown
 ## Ejemplo de uso
 
 > ¿Qué dice la Biblia sobre el perdón?
