@@ -45,7 +45,7 @@ Respuesta:"""
         "Content-Type": "application/json"
     }
     body = {
-       "model": "llama3-70b-8192",
+        "model": "llama3-70b-8192",
         "messages": [
             {"role": "system", "content": "Responde como un experto bíblico, claro y fiel al texto."},
             {"role": "user", "content": prompt}
@@ -59,10 +59,17 @@ Respuesta:"""
 
         if "choices" in data:
             respuesta = data["choices"][0]["message"]["content"]
+
+            # 🔧 FILTRAR FRASE INDESEADA
+            frase_indeseada = "La información que me proporcionaste no dice eso"
+            if frase_indeseada.lower() in respuesta.lower():
+                partes = respuesta.split(frase_indeseada, 1)
+                respuesta = partes[1].strip() if len(partes) > 1 else respuesta
+
             print(f"\n🔎 Pregunta: {pregunta}\n")
             print("📖 Respuesta:")
             print(respuesta)
-            return respuesta  # ← ¡AGREGÁ ESTO!
+            return respuesta
         else:
             print("❌ Error inesperado:")
             print(data)
